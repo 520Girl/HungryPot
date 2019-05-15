@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Hello world</title>
+		<script type="text/javascript" src="../assets/js/vue.js"></script>
+	</head>
+	<body>
+		<h1> hello word</h1>
+		<hr />
+		<div id="demo">
+			{{message}}
+			<span>
+				{{number + 20 | toInt | toAdd }}
+			</span>
+		</div>
+		<script type="text/javascript">
+			var demo= new Vue({
+				el:'#demo',
+				data:{
+					message:'hello word',
+					number:556.554
+				},
+				filters:{
+					toInt:function(number){
+						return parseInt(number)
+					},
+					toAdd:function(number){
+						return number++
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

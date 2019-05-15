@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>methods option 方法选项</title>
+    <pre>
+        1.主要使用就是鼠标点击事件，鼠标获取焦点，鼠标失去焦点的事件
+    </pre>
+</head>
+<body>
+    <div id="demo">
+        {{message}}
+        <p>{{count}}</p>
+        <button @click="add(1,$event)">ADD</button> 
+        <p><btn @click.native="add(2)"></btn></p>
+        <!-- 这里native是原生的意思，但在这里表示，调用构造中原始的方法 经常使用 -->
+        <!-- 这里有两种写法add，add()这里就可以传值 -->
+    </div>
+    <button onclick="demo.add(3)"> 第三种方式</button>
+        <!-- 第三中情况 -->
+    <script>
+        var btn={
+            template:"<button>试试调用methods中的方方法</button>"
+        }
+        var demo=new Vue({
+            el:"#demo",
+            data:{
+                message:"消息",
+                count:2,
+            },
+            components:{
+                'btn':btn
+            },
+            methods:{
+                add:function(num,event){ //这里出现了一个
+                    //return this.count++;
+                    console.log(event);
+                    console.log($event)
+                    if(num != " "){
+                        return this.count+=num;
+                    }else{
+                        return this.count++;
+                    }
+                }
+            }
+        })
+        var count=2;
+        var num="";
+        console.log(num++);
+        function name(num){
+            if(num != " "){
+                return this.count+=num;
+            }else{
+                return this.count++;
+            }
+        }
+        console.log(name());
+    </script>
+</body>
+</html>

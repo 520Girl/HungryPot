@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery-3.3.1.min.js"></script>
+    <title>example methods Demo</title>
+    <pre>
+        1.vue和jquery 一起使用,挂载完成就是指dom元素已经被加载了，如生命周期函数mounted
+    </pre>
+</head>
+<body>
+    <div id="demo">
+        {{message}}
+        <p><button @click="less()">我是↓按钮</button></p>
+        <p><button @click="add()">我是↑按钮</button></p>
+        <div id="name"></div>
+    </div>
+    <script>
+        var demo = new Vue({
+            el:"#demo",
+            data:{
+                message:"消息",
+                count:1
+            },
+            methods:{
+                add:function(){
+                    console.log("我是通过实例的方法调用的")
+                },
+                less:function(){
+                    console.log("我是通过按钮实习的")
+                }
+            },
+            mounted:function(){
+                $("#name").html("我是当dom元素被加载后执行的jquery")
+            }
+        })
+        demo.add()//注意此处必须加括号，这是通过实例的方法调用
+    </script>
+</body>
+</html>

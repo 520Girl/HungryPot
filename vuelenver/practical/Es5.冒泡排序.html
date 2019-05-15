@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>冒牌排序</title>
+</head>
+<body>
+    <script>
+        function sort(elements){
+            for(var i=0;i<elements.length -1 ;i++){
+                for(var j=0;j<elements.length-i-1;j++){
+                    if(elements[j]>elements[j+1]){
+                        var swap = elements[j];   //s=44
+                        elements[j]=elements[j+1]; //j=5
+                        elements[j+1]=swap;         //j+1 =44
+                    }
+                }
+            }
+        }
+        var elements=[44,7,3,43,66,9]; //这人真心牛逼
+        console.log('before'+elements);
+        sort(elements);
+        console.log('after'+elements);
+
+        
+    </script>
+</body>
+</html>

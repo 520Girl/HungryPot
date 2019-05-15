@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>接收一下</title>
+  <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <color v-bind:value="msg" v-on:func="add"></color>
+
+  </div>
+  <template id="temp">
+    <div>
+      <h1 >这是组件{{message}}{{value}}</h1>
+      <label for="add">
+        点击
+        <input type="button" id="add" @click="show">
+      </label>
+    </div>
+  </template>
+<script>
+  Vue.component('color',{
+    template:"#temp",
+    data:function(){
+      return{
+        message:"我来自子组件"
+      }
+    },
+    methods:{
+      show(){
+        this.$emit('func',123,456,888)
+      }
+    },
+    props:['value']
+  })
+ var vm = new Vue({
+  el:'#app',
+  data:{
+      msg:'我来自父组件',
+      num:111,
+   }, 
+  methods:{
+    add(data1,data2,data3){
+      console.log(data1)
+      console.log(data2)
+      console.log(data3)
+    }
+  }
+ }) ;
+ </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-extend构造器</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <pre>
+            1.可以简单理解为当在模板中遇到该组件名称作为标签的自定义元素时，
+            2.会自动调用“扩展实例构造器”来生产组件实例，并挂载到自定义元素上。
+            3.这个就是一个扩展实例构造器，用来当需要生产组件时如Vue.component需要重新构建一个属于自己的组件时
+            系统会找Vue.extend配合来构造成功
+    </pre>
+    <author></author>
+    <tag></tag>
+    <newInput></newInput>
+    <div id="tag">12345</div>
+</head>
+<body>
+    <script type="text/javascript">
+        var extend =Vue.extend({
+            template:'<input type="typeName" name="Name" value="valueNUM"/>',
+            data:function(){
+                return{
+                    typeName:"checkbox",
+                    name:"extend",
+                    valueNUM:"20190326"
+                }
+            }
+        })
+        var authorExtend = Vue.extend({
+            template:"<h1><a :href='authorUrl'>{{authorName}}</a></h1>",
+            data:function(){
+                return{
+                    authorName:'extend',
+                    authorUrl:'http://www.baidu.com'
+                }
+                
+            }
+        });
+        new extend().$mount('newInput');
+        new authorExtend().$mount('author'); //扩展实例的挂载
+        new authorExtend().$mount('#tag');  //
+
+        var tagExtend = Vue.extend({
+            template:"<input type='tagType' value='tagValue' name='tagName'/>",
+            data:function(){
+                return{
+                    tagName:"name",
+                    tagType:"text",
+                    tagValue:"250"
+                }
+            }
+        })
+        new tagExtend().$mount('tag');
+    </script>
+</body>
+</html>

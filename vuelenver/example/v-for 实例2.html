@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>v-for</title>
+		<script type="text/javascript" src="../assets/js/vue.js"></script>
+	</head>
+	<body>
+		<h1>hellow Vue</h1>
+		<div id="demo">
+			<p>循环一维数组，合并一维数组</p>
+			<Ul>
+				<li v-for="(item,numb) in items">{{numb}}--{{item}}</li>
+				<li><p>一下↓是两个数组组合</p></li>
+				<li v-for="(item,number) in ConcatItemsItem">{{number}}  {{item}}</li>
+			</Ul>
+
+			<p>数组对象排列</p>
+			<ul>
+				<li v-for="(item,index) in students">{{index}}楼的{{item.name}}+{{item.age}}+{{item.生日年份}}</li>
+				<li v-for="item in sortStudent">{{item}}</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			var demo= new Vue({
+				el:"#demo",
+				data:{
+					items:[1,34,55,35,66,635,352342,66,332],
+					item3:[2,343,5324,555],
+					students:[
+						{name:"张福琼",age:"25",生日年份:1976},
+						{name:"杨成祥",age:"50",生日年份:1951},
+						{name:"天线宝宝",age:"22",生日年份:1996},
+						]
+				},
+				computed:{
+					ConcatItemsItem:function(){
+						return arrConcat(this.items,this.item3)
+					},
+					sortStudent:function(){
+						return sortStudents(this.students,'生日年份')
+					}
+				}
+			})
+			function arrConcat(arr1,arr2){
+				return arr1.concat(arr2)
+			}
+			function sortStudents(array,key){
+				return array.sort(function(y,x){
+					var a=y[key];
+					var b=x[key];
+					return (a<b)?-1:((a>b)?1:0)
+				})
+			}
+		</script>
+	</body>
+</html> 

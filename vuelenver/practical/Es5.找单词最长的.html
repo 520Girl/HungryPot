@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>找出最长的单词</title>
+</head>
+<body>
+    <script type="text/javascript">
+        function findLongWord(str){
+            var arr = str.split(" ");
+            console.log(arr);
+            var bat = arr.sort(function(a,b){
+                return b.length-a.length
+            })
+            return arr[0];
+        }
+        var str="this is a good sunndy"
+        document.write(findLongWord(str))
+        
+    </script>
+</body>
+</html>

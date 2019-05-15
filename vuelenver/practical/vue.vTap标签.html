@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Hello world</title>
+		<script type="text/javascript" src="../assets/js/vue.js"></script>
+	</head>
+	<body>
+    <style>
+    ul,li,ol{list-style: none;float: left;}
+    </style>
+		<h1> hello word</h1>
+		<hr />
+		<div id="demo">
+      <div class="tab-title">
+        <ul>
+          <li v-for="(item,index) in title" @click="cur=index" :class="{active:cur==index}">{{item}}</li>
+        </ul>
+      </div>
+          <span v-for="(item,index) in content" v-show="cur==index">{{item}}</span>
+      </div>
+		</div>
+		<script type="text/javascript">
+			var demo= new Vue({
+				el:'#demo',
+				data:{
+          message:'hello word',
+          title:["账户登录","快速注册","扫码登录"],
+          content:["登录框","注册表单","扫码地址"],
+          cur:0
+				}
+			})
+		</script>
+	</body>
+</html>

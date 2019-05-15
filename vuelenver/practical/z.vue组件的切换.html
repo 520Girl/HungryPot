@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div ref="msg">我是你爸爸</div>
+    <input type="text" value="点击" @click="show">
+  </div>
+<script>
+ var vm = new Vue({
+  el:'#app',
+  data:{
+      msg:'message',
+ 
+   }, 
+  methods:{
+    show(){
+      console.log(this.$refs.msg.value="阮江")
+      console.log(this.$refs.msg)
+      console.log(this.$refs)
+    }
+  }
+ }) ;
+ </script>
+</body>
+</html>

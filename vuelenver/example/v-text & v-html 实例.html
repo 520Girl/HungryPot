@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>v-text & v-html</title>
+		<script type="text/javascript" src="../assets/js/vue.js"></script>
+		<div id="demo">
+			<span>{{message}}</span><br />
+			<span>{{magHtml}}</span><br />
+			<!-- 这里解析会将v-html解析为html标签元素，text会将元素解析为页面元素 -->
+			<span v-html="magHtml "></span><br /> 
+			<span v-text="message"></span><br />
+		</div>
+	</head>
+	<body>
+		<script>
+			var demo=new Vue({
+				el:"#demo",
+				data:{
+					message:"hello word！",
+					magHtml:'<h1>hello Vue</h1>'
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Hello world</title>
+
+	</head>
+	<body>
+        <pre>
+            1.v-cloak能够解决插值表达是闪烁的问题{{}}，需要在css中加入display：none；。这个可以添加其他内容
+            2.v-text 默认没有闪烁问题，缺点不能在其添加内容，因为是v-text设置的是属性
+            3.v-html 会将插值表达，以<html>表示出来</html>  
+        </pre>
+        <h1> hello word</h1>
+		<hr />
+		<div id="demo">
+			<table border="" cellspacing="20px" cellpadding="5px">
+                <tr>
+                    <th>vue其他内部命令/标签</th>
+                    <th>需求分析</th>
+                    <th>代码演示</th>
+                    <th>运行结果</th>
+                </tr>
+                <tr>
+                    <th>v-pre</th>
+                    <th>就想写带有大括号{{}}的标签</th>
+                    <th v-text="codeDemo"></th>
+                    <th v-pre>{{message}}</th>
+                </tr>
+                <tr >
+                    <th>v-cloak页面DOM渲染完成才显示</th>
+                    <th v-cloak>想当页面加载完了执行css效果</th>
+                    <th v-text="codeDemo2">代码演示</th>
+                    <th v-bind:class="span">运行结果</th>
+                </tr>
+                <tr>
+                    <th>v-onec只进行一次数据渲染，第二次就是静态读取</th>
+                    <th>想让上排数据源只显示一次</th>
+                    <th v-text="codeDemo3">代码演示</th>
+                    <th>
+                        <div>{{message}}</div>
+                        <input type="text" v-model="message"/>
+                        <div v-once>{{message}}</div>
+                    </th>
+                </tr>
+                <tr>
+                    <th v-cloak>----{{message}}----</th>
+                </tr>
+            </table>
+        </div>
+        <script type="text/javascript" src="../assets/js/vue.js"></script>
+        <style>
+            .span{
+                display: none;
+                color: rgb(173, 22, 22);
+            }
+            .span::after{
+                content:"结果就是隐藏了";
+                height: 20px;
+                display: inline-block;
+            }
+            [v-cloak]{
+                background-color: red;
+            }
+        </style>
+		<script type="text/javascript">
+			var demo= new Vue({
+				el:'#demo',
+				data:{
+                    message:'hello word',
+                    codeDemo:"代码演示：<th v-pre>{{message}}</th>",
+                    codeDemo2:"代码演示：<th v-cloak>{{message}}</th>",
+                    codeDemo3:"代码演示：<th v-onece>{{message}}</th>",
+                    span:"span"
+				}
+			})
+		</script>
+	</body>
+</html>

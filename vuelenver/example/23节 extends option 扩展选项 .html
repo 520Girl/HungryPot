@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>extends option 扩展选项 delimiters</title>
+    <pre>
+        1.extends和那啥 mixins 差不多，当方法名一样的时候就只执行构造器中的
+        2.就是在混入哪里extends是只能混入一个，而mixins可以混入一个数组就是一群
+        3.delimiters的方法是改变一下插值符号
+        4.原生的再混入的方法之后执行
+    </pre>
+</head>
+<body>
+    <div id="demo">
+        ${message}
+        <div>
+            <span>${count}</span>
+            <button @click="add()">你点击我试试</button>
+        </div>
+    </div>
+    <script>
+        var objectArray={
+            updated:function(){
+                console.log("我是混入的updated")
+            },
+            methods:{
+                add:function(){
+                    return this.count++
+                }
+            }
+        }
+        var demo=new Vue({
+            el:"#demo",
+            data:{
+                message:"消息",
+                count:1
+            },
+            methods:{
+                add:function(){
+                    console.log("我是构造器中的方法")
+                    return this.count++
+                }
+            },
+            updated:function(){
+                console.log("我是构造器中的updated")
+            },
+            delimiters:['${','}'],
+            extends:objectArray
+        })
+    </script>
+</body>
+</html>

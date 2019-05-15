@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>computed & filter & method</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <div id="demo">
+        <p>{{countNumber}}</p>
+        <p>{{ 20 | countNumbe}}</p>
+    </div>
+</head>
+<body>
+    <script>
+        var demo = new Vue({
+            el:"#demo",
+            data:{
+                message:"hello word!",
+                methods:"我是方法名对 我就是方法名",
+                number1:"1",
+                number2:"3"
+            },
+            computed:{//计算机属性，而计算机属性依赖于data数据自动缓存
+                countNumber:function(){
+                    return numberAdd(this.number1,this.number2)
+                }
+                
+            },
+            filter:{//过渡方法
+                countNumbe:function(){
+                    return numberAdd(number1,number2)
+                }
+            },
+            method:{//也是一种属性与计算机属性的区别是里面的方法每执行一次都会运行，
+
+            },
+            wathch:{//watch函数适用于，当数据发生变化时，执行异步操作或较大开销操作的情况。来看下面的例子：
+
+            }
+            
+        })
+        function numberAdd(number1,number2){
+            return parseInt(number1)+parseInt(number2)
+            }
+    </script>
+</body>
+</html>

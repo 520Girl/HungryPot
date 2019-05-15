@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>对数组的操作</title>
+</head>
+<body>
+  <script>
+    function selectRepeat(arr1,arr2){ //数组去重
+      var arr =[];
+      for(var i=0;i<arr1.length;i++){
+        for(var a=0;a<arr2.length;a++){
+          if(arr1[i] == arr2[a]){
+            arr.push(arr1[i])
+             console.log(arr1[i])
+          }
+        }
+      }
+      return arr;
+    }
+    selectRepeat([1,2,3,4],[4,5,6,7,8,12,])
+  </script>
+</body>
+</html>

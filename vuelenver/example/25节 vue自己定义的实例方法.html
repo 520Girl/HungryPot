@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>vue自己定义的实例方法</title>
+    <pre>
+        1.$mount挂在我们的扩展到dom元素中去
+        2.$destroy()方法卸载实例，再$destory后面必须加上括号
+        3.$forceUpdate()方法,
+        4.$nextTick()数据修改方法和构造器中update很像
+    </pre>
+</head>
+<body>
+    <div id="demo">
+        {{message}}
+        <jspan></jspan>
+        <button onclick="destroy()">卸载</button>
+    </div>
+    
+    <script>
+        var jspan=Vue.extend({
+            template:`<h1>hello I am  jspan{{number}}</h1>`,
+            data:function(){
+                return{
+                    number:"55555555555!"
+                }
+            },
+            mounted:function(){//生命周期
+                console.log(" mounted 被创建")
+            },
+            destroyed:function(){
+                console.log("destroy 别销毁之后")
+            }
+        })
+        function destroy(){
+            jspan.$destroy();//这里必须加括号
+        }
+        var demo = new Vue({
+            el:"#demo",
+            data:{
+                message:"消息"
+            }
+        })
+        var jspan=new jspan().$mount('jspan')
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Hello world</title>
+		<script type="text/javascript" src="../assets/js/vue.js"></script>
+	</head>
+	<body>
+        <pre>绑定绑定标签上的属性
+			1.这里有个需要注意的是class属性带有.在对象中不需要带点，但仔细想一想也对
+			2.注意使用对象的时候-横线必须fontSize驼峰格式,必须打引号
+        </pre>
+		<h1> hello word</h1>
+		<hr />
+		<div id="demo">
+			<h3>v-bind & 缩写</h3>
+			<p>
+				v-bind:<img v-bind:src="src" alt="事例图片"><br/>
+				v-bind缩写:<a :href="webUrl">自己的网站</a>
+			</p>
+			<h3>v-bind 绑定css</h3>
+			<p>
+				外部css:<ol>
+							<li>单样式：<span :class="spanCss">外部css demo</span></li>
+							<li>多样式使用数组：<span :class="[spanCss,warpCss]">外部css demo</span></li>
+							<li>isOk判断是否为真：<span :class="{spanCss:isOk}">外部css 判断是否为真</span></li>
+							<li>结合三元运算符是否为真：<span :class="isOk?warpCss:spanCss">外部css 结合三元运算符="{{isOk}}"</span></li>
+							<li>跟v-model配套使用：
+								<h1>点击这个按钮</h1><input type="checkbox" id="demo" value="" v-model="isOk"/>
+								<label for="demo"><span :class="isOk?warpCss:spanCss">外部css 和v-model配合使用</span></label>
+							</li>
+						</ol>
+				对象css：<ol>
+							<Li>使用对象的方法：<span v-bind:style="styleObject">这个是使用了对象的方法对css的设置</span></Li>
+						</ol>
+			</p>
+		</div>
+		<style>
+			.span{
+				font-size: 25px;
+				color:greenyellow;
+			}
+			.warp{
+				color: red;
+				background-color: black;
+				font-weight: 900px;
+			}
+		</style>
+		<script type="text/javascript">
+			var demo= new Vue({
+				el:'#demo',
+				data:{
+					src:"https://fanyi.bdstatic.com/static/translation/img/favicon/favicon-32x32_ca689c3.png",
+					webUrl:"https://www.520ruan.cn",
+					spanCss:"span",
+					warpCss:"warp",
+					isOk:true,
+					styleObject:{
+						backgroundColor:'pink',
+						fontWeight:'900px'
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

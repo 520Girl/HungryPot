@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>symbol新的数据类型</title>
+</head>
+<body>
+  <script>
+    function dateType(){
+      let sy =Symbol("kk");
+      let sy1 =Symbol("kk");
+      if (sy === sy1) {
+        return "数据完全一样"
+      }
+      console.log("对不起数据不一样")
+      console.log(typeof(sy))
+      console.log(typeof(sy1))
+    }
+    dateType();
+
+    let sy = Symbol("key1");
+    let syObject ={};
+    syObject[sy]= "kk";
+    console.log(syObject);
+    console.log(sy);
+
+    //定义唯一的常量
+      const Color_Red = Symbol("red")
+      const Color_blue = Symbol.for("blue");
+      const color_white = Symbol("yellow")
+      console.log(Symbol.keyFor(Color_blue))
+        function getColorChange(color){
+          switch (color) {
+            case Color_Red:
+              return "颜色为red"
+              break;
+            case Color_blue:
+              return `颜色为${Color_blue}`
+              break;
+            case color_white:
+              return `颜色为${color_white}`
+              break;
+            default:
+              throw new Exception("这个是什么");
+          }
+        }
+        getColorChange(color_white);
+        
+  </script>
+</body>
+</html>

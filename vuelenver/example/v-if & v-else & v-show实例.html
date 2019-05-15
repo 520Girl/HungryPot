@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>v-if &v-else & v-show</title>
+		<script type="text/javascript" src="../assets/js/vue.js"></script>
+	</head>
+	<body>
+		<h1> v-if  判断是否登录</h1>
+		<hr />
+		<pre>
+			vue中显隐方法常用两种，v-show和v-if，但这两种是有区别的。
+			实现本质方法区别
+			vue-show本质就是标签display设置为none，控制隐藏
+			vue-if是动态的向DOM树内添加或者删除DOM元素
+			编译的区
+			v-show其实就是在控制css
+			v-if切换有一个局部编译/卸载的过程，切换过程中合适地销毁和重建内部的事件监听和子组件
+			编译的条件
+			v-show都会编译，初始值为false，只是将display设为none，但它也编译了
+			v-if初始值为false，就不会编译了
+			性能
+			v-show只编译一次，后面其实就是控制css，而v-if不停的销毁和创建，故v-show性能更好一点。
+		</pre>
+		<div id="demo">
+			<h1>你是否登陆成功</h1>
+			<p v-if="isLogin">
+				登陆成功
+			</p>
+			<!-- //这里可写isLogin或者不写 -->
+			<p v-else="isLogin">
+				你还没能登陆成功了
+			</p>
+			<p v-if=""></p>
+			<input type="checkbox" name="changeColor" id="changeColor" v-model="isLogin"/>
+			<label for="changeColor" v-bind:style="isLogin?color:noColor">点击我就可以变色</label>
+			<h1>这是对class的测试</h1>
+			<input type="radio" name="sex" id="wrapColor" value="男" v-model="item"/>
+			<label for="wrapColor" v-bind:class="noColor">男</label>
+			<input type="radio" name="sex" id="wrapColor" value="女" v-model="item"/>
+			<label for="wrapColor" v-bind:class="colors">女</label>
+			<p>{{item}}</p>
+			<h1>这是对v-bind的测试</h1>
+			<img v-bind:src="imgSrc" alt="淘宝图片">
+			<a v-bind:href="webUrl">My web</a>
+		</div>
+		<style>
+			.color{
+				border: 1px solid red;
+				background-color: pink;
+			}
+			.noColor{
+				display: inline-block;
+			}
+		</style>
+		<script type="text/javascript">
+			var demo = new Vue({
+				el:'#demo',
+				data:{
+					isLogin:false,
+					color:{
+						backgroundColor:"yellow",
+						fontSize:"20px"
+					},
+					noColor:{
+						fontWeight:"800px"
+					},
+					colors:"color",
+					noColor:"noColor",
+					item:[],
+					webUrl:"http://www.520ruan.cn",
+					imgSrc:"../assets/img/taobao.jpg"
+				}
+			})
+		</script>
+<!--
+	
+v-if 和v-show的区别：
+v-if： 判断是否加载，可以减轻服务器的压力，在需要时加载。
+v-show：调整css dispaly属性，可以使客户端操作更加流畅。
+
+-->
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>v-on 实例</title>
+		<script type="text/javascript" src="../assets/js/vue.js"></script>
+	</head>
+	<pre>   绑定事件
+			
+	</pre>
+		<div id="demo">
+			<p>本场比赛的分是:{{conte}}</p>
+			<button v-on:click="addFunction">加一</button>,<span></span>
+			<button @click="minusFuntion">减一</button>,<span></span><br/>
+			<input name="Onclik" v-on:keyup.13="onEnter" v-model="baskerball2"><br/>
+			<h1>{{conte}}</h1>			
+		</div>
+		<script type="text/javascript">
+			var demo = new Vue({
+				el:"#demo",
+				data:{
+					conte:0,
+					baskerball2:2
+				},
+				methods:{
+					addFunction :function(){
+						return this.conte++;
+					},
+					minusFuntion:function(){
+						return this.conte--;	
+					},
+					onEnter:function(){
+
+						return this.conte=this.conte+parseInt(this.baskerball2);
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

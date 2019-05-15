@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>demo</title>
+  <style>
+    .demo{
+      height: 100px;
+      width:100px;
+      background-image: linear-gradient(red,blue);
+    }
+    .test{
+      height: 100px;
+      width: 100px;
+      background-image: radial-gradient(center,)
+    }
+    ul li{
+      margin-top: 10px;
+    }
+    ul li:nth-child(1){
+      height: 100px;
+      width: 100px;
+      background-image: linear-gradient(to bottom left,red,blue)
+    }
+    [class="ruan"]{
+      height: 100px;
+      width: 100px;
+      border: 1px solid red;
+    }   
+    ul li:nth-child(3){
+      height: 100px;
+      width: 100px;
+      background-image: repeating-linear-gradient(45deg, rgb(5, 240, 122) 20px, rgb(9, 9, 235) 30px, rgb(7, 238, 123) 40px);
+    }
+    ul li:nth-child(4){
+      height: 100px;
+      width: 100px;
+      background-image: repeating-linear-gradient(45deg, #66CC99 20px, #6666CC 20px, #6666CC 30px, #66CC99 30px, #66CC99 40px);
+    }
+    ul li:nth-child(5){
+      height: 100px;
+      width: 100px;
+      background-image: radial-gradient(circle at 20% 40%,#99CCCC 20%, #7171B7 40%, #CCCC99 60%, #4F9C9C 80%)
+    }
+    ul li:nth-child(6){
+      height: 100px;
+      width: 100px;
+      background-image: radial-gradient(circle at 20% 40%, #66CC99 20px, rgb(72, 72, 100) 20px, rgb(58, 173, 97) 30px, rgb(168, 33, 33) 30px, rgb(7, 238, 123) 40px)
+    }
+    ul li:nth-child(7){
+      height: 100px;
+      width: 100px;
+      background-image: repeating-radial-gradient(circle at 20% 40%,#99CCCC 20px, #7171B7 40px, #CCCC99 60px, #4F9C9C 80px, #99CCCC 100px);
+    }
+    ul li:nth-child(8){
+      height: 100px;
+      width: 100px;
+      background-image: repeating-radial-gradient(circle at 20% 40%,red 10px,blue 20px,yellow 30px,red 40px)
+    }
+  </style>
+</head>
+<body>
+  <div class="demo"></div>
+  <div class="test"></div>
+  <ul>
+    <li ></li>
+    <li class="ruan"></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</body>
+</html>
+<script>
+  console.log(Promise.name)
+  console.log(Promise)
+  var arr=[1,2,3,4,5,6,7,8,9]
+  console.log(arr.slice(2));
+  console.log(arr.slice(2,5).fill.length)
+  var nums ="25";
+  console.log(nums.slice(1));
+  var day =new Date();
+  console.log(day.getMinutes());
+</script>

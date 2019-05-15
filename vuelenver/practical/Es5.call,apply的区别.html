@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>的区别</title>
+</head>
+<body>
+  <script>
+    //apply
+    function person(){
+      this.name="王小明";
+      this.add =function(){
+        console.log(this.name);
+      }
+    }
+    function add(){
+      this.showadd=function(a,b){
+        return `输出${a+b}`
+      }
+    }
+    function add1(){
+      add.apply(this,[name])
+      person.apply(this,[name])
+    }
+    var func = new add1();
+    console.log(func.name);
+    console.log(func.showadd(1,3))
+
+
+    //这个例子可以浅显易懂
+    var foo = {
+    value: 1
+    };
+
+    function bar() {
+      console.log(this.value);
+    }
+
+    bar.call(foo); // 1
+
+    //
+    var arr = [1,2,5,88,3]
+    console.log(...arr)
+    console.log(Math.max(...arr))
+    console.log(Math.min.apply(null,arr))
+  </script>
+</body>
+</html>

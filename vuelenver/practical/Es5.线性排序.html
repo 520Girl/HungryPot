@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var jsons={"songs":[
+            {
+                "id":1336856777,
+                "title":"我曾",
+                "author":"隔壁老樊",
+                "author_id":12429072,
+                "author_pic":"http://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "pic":"https://api.hibai.cn/music/Music/Music?id=1336856777&type=pic",
+                "url":"https://api.hibai.cn/music/Music/Music?id=1336856777&type=url",
+                "lrc":"https://api.hibai.cn/music/Music/Music?id=1336856777&type=lrc",
+                "time":286
+            },{
+                "id":534540206,
+                "title":"告白の夜",
+                "author":"Ayasa绚沙",
+                "author_id":1193188,
+                "author_pic":"http://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                "pic":"https://api.hibai.cn/music/Music/Music?id=534540206&type=pic",
+                "url":"https://api.hibai.cn/music/Music/Music?id=534540206&type=url",
+                "lrc":"https://api.hibai.cn/music/Music/Music?id=534540206&type=lrc",
+                "time":291
+            },
+        ]}
+        
+        console.log(jsons.songs[1].id)//js对象key没带双引号
+        console.log(JSON.stringify(jsons))
+        var data1 = {"username":"admin","password":"123456","email":"815842080@qq.com"}
+        var data2 =["username","password","815842080@qq.com"]
+        var data3 ={"demo":[
+            {"username":"admin"},
+            {"password":"12345678"},
+            {"email":"815842080@qq.com"}
+        ]}
+        console.log(data3.demo[1].password);
+    </script>
+</body>
+</html>

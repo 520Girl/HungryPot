@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <table>
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>name</th>
+          <th>sex</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(index,order) in item" >
+          <td>{{index.id}}</td>
+          <td>{{index.name}}</td>
+          <td>{{index.sex}}</td>
+          <td><a href="http://www.baidu.com" @click.prevent="del(index.id)">删除</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+<script>
+ var vm = new Vue({
+  el:'#app',
+  data:{
+      msg:'message',
+      item:[
+        {id:1,name:"茶杯",sex:"boy"},
+        {id:2,name:"水杯",sex:"boy"},
+        {id:3,name:"菜篮",sex:"girl"}
+            ]
+   }, 
+  methods:{
+    del(id){
+     var index = this.item.findIndex(item=>{
+       if(item.id == id){
+         return true
+       }
+     })
+     this.item.splice(index,1)
+     console.log(index);
+
+    }
+  }
+ }) ;
+ </script>
+</body>
+</html>

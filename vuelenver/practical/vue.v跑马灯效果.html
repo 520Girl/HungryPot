@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script type="text/javascript" src="../assets/js/vue.js"></script>
+  <title>跑马灯效果</title>
+</head>
+<body>
+  <div id="app">
+    <button type="button" @click="left">浪起来</button>
+    <button type="button" @click="right">停下来</button>
+    <h3 v-cloak>{{msg}}</h3>
+  </div>
+</body>
+</html>
+<script>
+  var app = new Vue({
+    el:"#app",
+    data:{
+      msg:"跑起来gogogogo~~~~~~!",
+      interval:null,
+    },
+    methods:{
+      left:function(){
+        if(this.interval != null)return;
+        var _this =this;//也可以屎桶es6的箭头函数解决 ()=>{这里的this还是vue,这就是箭头函数的好处}
+        this.interval =setInterval(() => {
+          var start = _this.msg.substring(0,1);
+          var end = _this.msg.substring(1)
+          _this.msg = end + start;
+        },400)
+        
+        
+      },
+      right(){//Es6写法
+        clearInterval(this.interval);
+        this.interval = null;
+      }
+    },
+    watch:{//出现个问题持续加速刷新
+      //  msg:function(newVal,oldVal){
+      //    console.log(newVal +''+ oldVal);
+      //    if(newVal != oldVal){
+      //      var int =setInterval(this.left,400);
+      //      this.interval = null;
+      //    }
+      //  }
+    }
+  })
+  //给按钮添加点击事件
+  //字符串截取substring,定时器实现动起来
+</script>

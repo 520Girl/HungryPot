@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Vue生命周期函数</title>
+		<script type="text/javascript" src="../assets/js/vue.js"></script>
+	</head>
+	<body>
+		<h1> hello word</h1>
+		<hr />
+		<div id="demo">
+            {{message}}
+            <p>{{number}}</p>
+            <button v-on:click="add()">按钮</button>
+            <button onclick="demo.$destroy()">销毁</button>
+        </div>
+        
+		<script type="text/javascript">
+			var demo= new Vue({
+				el:'#demo',
+				data:{
+					message:'hello word',
+					number:556.554
+				},
+                methods:{
+                    add:function(){
+                        return this.number++;
+                    }
+                },
+                beforeCreate:function(){
+                    console.log('1-beforeCreate 初始化之前');
+                    document.write('1-beforeCreate 初始化之前')
+                },
+                created:function(){//常用加载你的动画时loading
+                    console.log('2-created 创建完成');
+                    document.write('2-created 创建完成')
+                },
+                beforeMount:function(){
+                    console.log('3-beforeMount 挂载之前');
+                    document.write('3-beforeMount 挂载之前')
+                },
+                mounted:function(){//组件挂载好了，加载等待完成 表示Dom已经加载完成
+                    console.log('4-mounted 被创建也就是挂载之后');
+                    document.write('4-mounted 被创建也就是挂载之后')
+                },
+                beforeUpdate:function(){
+                    console.log('5-beforeUpdate 数据更新前');
+                    document.write('5-beforeUpdate 数据更新前')
+                },
+                updated:function(){
+                    console.log('6-updated 被更新后');
+                    document.write('6-updated 被更新后')
+                },
+                activated:function(){
+                    console.log('7-activated');
+                    document.write('7-activated')
+                },
+                deactivated:function(){
+                    console.log('8-deactivated');
+                    document.write('8-deactivated')
+                },
+                beforeDestroy:function(){
+                    console.log('9-beforeDestroy 销毁之前');
+                    document.write('9-beforeDestroy 销毁之前')
+                },
+                destroyed:function(){
+                    console.log('10-destroyed 销毁之后');
+                    document.write('10-destroyed 销毁之后')
+                }
+			})
+		</script>
+	</body>
+</html>

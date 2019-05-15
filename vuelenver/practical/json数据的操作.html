@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Hello world</title>
+		<script type="text/javascript" src="../assets/js/vue.js"></script>
+	</head>
+	<body>
+    <div id="demo">
+      <button @click="add">1223</button>
+      <button @click="count()">1223</button>
+    <dl>
+      <dt></dt>
+      <dd v-for="item in JSON.parse(this.jsonTwo).employees">{{item.firstName}}</dd>
+    </dl>
+  </div>
+		<script type="text/javascript">
+			var demo= new Vue({
+				el:'#demo',
+				data:{
+          message:'hello word',
+          jsonOne:{"status":[
+              {"username":"特步","password":"8888"},
+              {"username":"36异步","password":"7777"},
+              {"username":"36异步","password":"7777"}
+            ]},
+            jsonTwo:'{ "employees" : [' +
+              '{ "firstName":"Bill" , "lastName":"Gates" },' +
+              '{ "firstName":"George" , "lastName":"Bush" },' +
+              '{ "firstName":"Thomas" , "lastName":"Carter" } ]}',
+            jsonThree:[
+              {id:"0",child:[{meg:"success"}]},
+              {id:"1",child:[{meg:"error"}]},
+              {id:"2",child:[{meg:"消息提示"}]}
+            ]
+          },
+          methods:{
+            add:function(){
+              console.log(this.jsonOne.status.username)
+              console.log(JSON.parse(this.jsonTwo).employees[0])
+              console.log(this.jsonTwo)
+            },
+            count:function(){
+              console.log(this.jsonThree[0].child[0].meg)
+              
+
+            }
+          }
+				
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>计算机属性computed的使用</title>
+    <pre>
+        主要的作用是对数据的改造输出，改造格式包括，格式转换，大小写转换，顺序重排，添加符号等....
+    </pre>
+</head>
+<body>
+    <div id="demo">
+        <p>{{add}}</p>
+        <ul>
+            <li v-for="item in newLists">{{item.title}}-{{item.date}}</li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        var newList =[
+            {title:"a particular day of the month, sometimes in a particular year ",date:"2017/12/1"},
+            {title:"c particular day of the month, sometimes in a particular year ",date:"2017/12/2"},
+            {title:"b particular day of the month, sometimes in a particular year ",date:"2017/12/3"},
+            {title:"e particular day of the month, sometimes in a particular year ",date:"2017/12/4"},
+            {title:"a particular day of the month, sometimes in a particular year ",date:"2017/12/5"}
+        ]
+        var demo= new Vue({
+            el:"#demo", //这里我忘记写#号了
+            data:{
+                price:100,
+                newList:newList //这里多写了双引号
+            },
+            computed:{
+                add:function(){
+                    return this.price="@"+ this.price +"元";
+                },
+                newLists:function(){//对象的匿名函数不能与对象名一致
+                    return this.newList.reverse();
+                }
+            }
+        })
+    </script>
+</body>
+</html>

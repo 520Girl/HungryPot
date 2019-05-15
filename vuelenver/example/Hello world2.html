@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>hellow world</title>
+    <div id="demo">
+        <ol>
+            <li><mark v-html="message"></mark></li>
+            <li><header v-text="message"></header></li>
+            <li><nav v-on:click="addNum">加一</nav><aside>{{num}}</aside></li>
+            <li><nav @click="minusNum">minus</nav><aside>{{num}}</aside></li>
+            <li><section v-for="item in arrSort">这个是逻辑区域或者内容的组合:{{item}}</section></li>
+            <li><aside v-for="item in studentsSort">{{item}}</aside></li>
+            <li><article v-for="item in studentsSort">{{item}}</article></li>
+            <li>
+                <input type="checkbox" name="username" id="username" value="username"v-model="number" v-bind:class="isLogin?bg:co"/>
+                <label for="username">用户名</label>
+                <input type="checkbox" name="username" id="password" value="password" v-model="number"/>
+                <label for="username">密码</label>
+                <input type="checkbox" name="username" id="email" value="email" v-model="number"/>
+                <label for="username">邮箱</label>
+                <p>{{number}}</p>
+            </li>
+        </ol>
+    </div>
+</head>
+<body>
+    <script type="text/javascript">
+        var app= new Vue({
+            el:"#demo",
+            data:{
+                message:"<h1>好了我要开始模拟车祸现场了，你们都让一让</h1>",
+                num:5,
+                item:[1,4,3,56,7,7.5,33,21,2,65,0],
+                students:[
+                    {标签:"<nav></nav>",作用:"导航栏",字符:"11"},
+                    {标签:"<header></header>",作用:"头部",字符:"17"},
+                    {标签:"<canvas></canvas>",作用:"画布",字符:"19"},
+                    {标签:"<aside></aside>",作用:"导航栏",字符:"15"},
+                ],
+                
+                isLogin:true,
+                number:[],
+                bg:{
+                    backgroundColor:"red"
+                },
+                co:{
+                    color:"yellow"
+                }
+            },
+            computed:{
+                addNum:function(num){
+                    return this.num++
+                },
+                minusNum:function(){
+                    return this.num--
+                },
+                arrSort:function(){
+                    return arrSort(this.item);
+                },
+                studentsSort:function(){
+                   return studentsSort(this.students,"字符")
+                }
+            }
+        })
+        function arrSort(item){
+            return item.sort(function(a,b){
+                return a-b;
+            })
+        }
+        function studentsSort(students,key){
+            return students.sort(function(a,b){
+                var x = a[key];
+                var y = b[key];
+                return x-y;
+            })
+        }
+    </script>
+</body>
+</html>

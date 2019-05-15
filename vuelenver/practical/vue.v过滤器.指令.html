@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+  <!-- 当私有过滤器和全局过滤器名称一致,优先调用近的,也就是vue里的 -->
+  <div id="app">
+    <p >过滤实例::{{msg |text('我喜欢你','我也是')|dataForm('----') }}</p>
+    <button type="button" @keyup.f2="f2Event">戳我</button>
+    <div>
+      <h1>组件实例</h1>
+      <p>
+        <input type="text"  v-fontsize >
+        <span v-color="'red'" v-fontweight>这段字体有点意思</span>
+      </p>
+    </div>
+  </div>
+<script>
+  //配置全局过滤器
+  Vue.filter('text',function(msg,arg,arg2){
+    return msg.replace(/文字/g,arg+arg2)
+  })
+  //配置按键修饰符
+  Vue.config.keyCodes.f2 =113;
+    //配置全局指令 注意这里不需要写大括号(简写的情况下)
+  Vue.directive('fontweight',
+    function (el) {
+      el.style.color = "red";
+      console.log(el);
+      el.style.fontSize ="20px"
+    })
+ var vm = new Vue({
+  el:'#app',
+  data:{
+      msg:'这是一段文字,我想要过对这段文字进行过滤,文字的内容:我想修改这段位置但你要给我机会',
+   }, 
+  methods:{
+    f2Event(){
+      console.log('我是配置的按键修饰符');
+    }
+  },
+  filters:{
+    dataForm:function(msg,arg){
+      return msg+arg;
+    }
+  },
+  directives:{
+    'color' :{ //'color' 或者 color
+      bind(el,binding){ //颜色等设置,指令绑定到元素上立即执行,也就是在内存中
+        el.style.color = binding.value;
+        console.log(binding.value)
+        console.log(binding.expression)
+        console.log(binding.name);
+
+      },
+      inserted(el,binding){//从内存中插入到dom元素中,在这里对dom元素的,js的操作最好在这里
+        el.focus();
+      },
+      update(el,binging){ //被创建模块更新的时候,可触发多次
+
+      },
+      componentUpdate(el,binding){ //组件更新的时候
+
+      },
+      unbind(el,binding){ //销毁组件的时候
+
+      }
+    },
+    'fontsize':function (el,binding) {//这是简写简写的是bbind,update钩子函数
+        console.log(el);
+        console.log("我是fontsize组件")
+    }
+  }
+ }) ;
+ </script>
+</body>
+</html>

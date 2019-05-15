@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>动画类</title>
+  <script type="text/javascript" src="../assets/js/vue.js"></script>
+  <!-- 第三方类库 -->
+  <link rel="stylesheet" href="../assets/css/animate.css">
+  <style>
+    /* 第一个 实现 过渡 */
+    .v-enter,.v-leave-to{
+      opacity: 0;
+      transform: translateX(150px);
+    }
+    .v-enter-active,.v-leave-active{
+      transition: all 1s ease;
+      
+    }
+/* 第二个  使用别名实现动画,*/
+    .ruan-enter-active{
+      animation: colors .5s;
+    }
+    .ruan-leave-active{
+      animation: colors .5s reverse;
+    }
+    @keyframes colors {
+      0%{transform: scale(0);}
+      50%{transform: scale(1.5);}
+      100%{transform: scale(1);}
+    }
+    /* 第四个 通过钩子函数实现半场动画 */
+    .box{
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: greenyellow;
+    }
+    .my-enter,.my-leave-to{
+      opacity: 0;
+    }
+    .my-enter-active,.my-leave-active{
+      transition:opacity 1s;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+  <div> 
+    <h1>过渡名实现动画transition</h1>
+    <button type="button" @click="falt=!falt">戳我</button>
+    <transition name="jiang">
+      <div v-if="falt">显示content</div>
+    </transition>
+    <hr/>
+    <button type="button" @click="falt1 = !falt">戳我试试</button>
+    <transition name="ruan">
+      <div v-if="falt1">使用别名实现动画</div>
+    </transition>
+    <hr/><!-- 使用第三方库实现过渡 -->
+    <button type="button" @click="falt2 = !falt2">给我搓澡</button>
+    <transition enter-active-class="bounceIn" leave-active-class="bounceOut" :duration="{ enter: 100, leave: 100 }">
+      <div v-if="falt2" class="animated">使用第三方库进行动画</div>
+    </transition>
+    <hr/><!-- 使用动画的钩子函数实现半场动画 -->
+    <button type="button" @click="falt3 = !falt3" >快!搓我</button>
+    <transition @before-enter="beforeEnter" @enter="Enter" @after-enter="afterEnter">
+      <div class="box" v-show="falt3" >我</div>
+    </transition>
+    <hr/>
+    <transition name="my">
+      <button key="falt" @click="falt = !falt">{{ falt ? 'On' : 'Off' }}</button>
+    </transition>
+  </div>
+  </div>
+<script>
+ var vm = new Vue({
+  el:'#app',
+  data:{
+      msg:'message',
+      falt:false,
+      falt1:false,
+      falt2:true,
+      falt3:false,
+      //isEditing:true
+   }, 
+  methods:{
+    beforeEnter(el){ //el表示要执行动画的dom元素,也就是原生js的dom元素 ,在执行动画之前
+    el.style.color="red",
+    el.style.transform ="translate(0,0)"
+  },
+  Enter(el,done){ //动画执行完成 
+  // 这句话，没有实际的作用，但是，如果不写，出不来动画效果；
+          // 可以认为 el.offsetWidth 会强制动画刷新
+    el.offsetWidth
+    el.style.transform="translate(400px,200px)"
+    el.style.transition="all 1s ease"
+    // 这里的 done， 起始就是 afterEnter 这个函数，也就是说：done也是个回调函数, 是 afterEnter 函数的引用
+    done()
+  },
+  afterEnter(el){//动画执行完之后
+    //这句话的作用, 控制小球的显示隐藏,
+    //直接跳过后半场动画,使true直接变为false
+    //第二次点击按钮 又是从 false变为true
+    this.falt3 = !this.falt3
+    //el.style.opacity =0.5 这个没有建true变为false 所有不能起到半场动画
+    //vue把一个动画分为了前半场和后半场,我们使用falt3表示符,来表示切换动画
+    //动画过程 false => true =>false 这为前后半场,这时我们需要前半场
+  }
+  },
+
+ }) ;
+ </script>
+</body>
+</html>

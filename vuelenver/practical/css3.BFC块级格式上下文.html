@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Bfc块级格式上下文</title>
+  <style>
+    .dv {
+        width: 400px;
+        height: 400px;
+        border: 1px solid slateblue;
+    }
+
+    .dv2 {
+        width: 200px;
+        height: 100px;
+        background: salmon;
+        margin-bottom: 30px;
+        /* display: inline-block; */
+    }
+
+
+    .dv3 {
+        width: 200px;
+        height: 100px;
+        margin-top: 60px;
+        background: seagreen;
+        /* display: inline-block; */
+    }
+    .dv4{
+      overflow: hidden;
+    }
+
+    .second{
+        width: 400px;
+        padding: 10px;
+        border: 1px solid slateblue;
+
+    }
+    .float{
+        float: left;
+        width: 200px;
+        height: 50px;
+        background: salmon;
+    }
+    .demo{
+      /* overflow: hidden; */
+      background: slategray;
+      }
+
+      
+      .second1{
+        width: 400px;
+        padding: 10px;
+        border: 1px solid slateblue;
+
+    }
+    /* .second1:after{
+      //清除浮动
+	content:".";
+	clear:both;
+	display:block;
+	height:0;
+	overflow:hidden;
+	visibility:hidden;
+} */
+    .float1{
+        float: left;
+        width: 200px;
+        height: 50px;
+        background: salmon;
+    }
+    .demo1{
+      background: slategray;
+      }
+  </style>
+</head>
+<body>
+  <!-- 情况一 -->
+  <div class="dv">
+    <div class="dv2">
+
+    </div>    
+    <div class="dv4">   
+      <div class="dv3">
+        IE6、IE7中， // function foo(){ // console.log(a); // } // function bar(){ // var a =3 ;
+      </div>
+    </div>
+  </div>
+  <!-- 情况二 -->
+  <div class="second">
+    <div class="float" ></div>
+    <div class="demo">发放了解到萨浪费放假奥拉夫结案率放假放假奥法阿见佛杀佛</div>
+  </div>
+  <!-- 第三种情况 -->
+  <div class="second1" >
+      <div class="float1" ></div>
+      <div ></div>
+      <div class="demo1">发放了</div>
+    </div>
+</body>
+</html>
+<script>
+  function func(){
+   var arr=[1,2,3,4,5,6,7,8];
+    arr =arr.splice(5,2);
+    console.log(arr);
+  }
+  console.log(func());
+</script>

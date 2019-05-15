@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+  <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+  <title>移动端响应</title>
+  <style>
+    /* 全局样式改变 */
+      input,textarea{
+        outline: none;/* 是绘制于元素周围的一条线，位于边框边缘的外围 */
+        border: none;
+        resize: none;/* 就是textarea右下角的自由缩放禁用 */
+        -webkit-appearance: none;/*元素的外观 none没有任何样式 */
+      }
+    body{
+      width: 100%
+    }
+    dl{ /* 第一种方法通过calc计算content宽的 */
+      width: -webkit-calc(100% - (100px + 4px) );
+      width: -moz-calc(100% - (100px + 4px));
+      width: -o-calc(100% - (100px + 4px));
+      width: calc(100% - (100px + 4px));
+      padding: 50px;
+      border: 2px solid green;
+      margin: 0;
+    }
+    /* dl{ //第二种方案解决宽的溢出出现滚动条，移动端常用布局是非固定布局
+      -webkit-box-sizing: border-box;
+      box-sizing：border-box
+      -moz-box-szing：border-box
+    } */
+    /* 点击高亮效果的清除 */
+    a{
+      tap-highlight-color: transparent;
+       -webkit-tap-highlight-color:transparent;
+      height: 100px;
+      width: 100px;
+
+    }
+
+
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <dl>
+    <dt>标题</dt>
+    <dd>内容是什么内容就是</dd>
+  </dl>
+  <a href="javascript:;">我</a>
+</body>
+</html>
+<script>
+//   var obj = new Base();
+//   Base.prototype.toString = function(){
+//     return this.id
+//   }
+// console.log(obj.toString)
+
+  function employee(name,user,sex){
+    this.name="ruanjiang";
+    this.user="阮江";
+    this.sex ="boy";
+  }
+  var item = new employee();
+  employee.prototype.salary =  null;
+  item.salary = 500;
+  var data = new Date();
+  console.log(Date.prototype)
+  console.log(item.salary);
+  console.log(item.name);
+</script>

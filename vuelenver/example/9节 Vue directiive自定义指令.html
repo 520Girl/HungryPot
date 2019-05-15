@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>自定义指令</title>
+    <pre>
+        1.就是在构造器外面用vue提供给我们的API函数定义新功能
+        2.自定义的指令有五个生命周期(也叫钩子函数)bind，inserted，componentUpdated，unbind,update
+        3.bind:只调用一次，指令第一次绑定到元素时调用，用这个钩子函数可以定义一个绑定时执行一次的初始化动作。
+        4.inserted:被绑定元素插入父节点时调用（父节点存在即可调用，不必存在于document中）。
+        5.update:被绑定于元素所在的模板更新时调用，而无论绑定值是否变化。通过比较更新前后的绑定值，可以忽略不必要的模板更新。
+        6.componentUpdated:被绑定元素所在模板完成一次更新周期时调用。
+        7.unbind:只调用一次，指令与元素解绑时调用。
+        8.el: 指令所绑定的元素，可以用来直接操作DOM。
+        9.binding: 一个对象，包含指令的很多信息。
+        10.vnode: Vue编译生成的虚拟节点。
+    </pre>
+    <div id="demo">
+        <h1 v-ruan="color">{{num}}</h1>
+        <p><button @click="addNum">ADD</button></p>
+        <p v-color="bakcground">背景颜色绿黄</p>
+        <button onclick="unbind()">解绑</button>
+        <h3 v-background="background">这是h3标题{{n}}</h3>
+    </div>
+</head>
+<body>
+    <script>
+        function unbind(){
+            demo.$destroy();
+        }
+        Vue.directive("ruan",function(el,binding){ //指令 v-ruan
+            console.log(el);
+            el.style="color:"+binding.value
+            console.log(binding);
+        })
+        Vue.directive("color",{ //指令  v-color
+            bind:function(){//函数只会调用一次，执行一次初始化动作
+                console.log('1 - bind');
+            },
+            inserted:function(){//元素所存在的模块更新时期调用
+                console.log('2 - inserted');
+            },
+            update:function(){//被绑定元素所在模块更新时调用
+                console.log('3 - update')
+            },
+            componentUpdated:function(){//组件更新完成
+                console.log('4 - componentUpdated');
+            },
+            unbind:function(){ //解除绑定
+                console.log('5 - unbind')
+            }
+        })
+        Vue.directive("background",{
+        bind:function(){
+            console.log(this.n+5) ;
+        },
+        inserted:function(el,binding){
+            el.style="background:"+binding.value
+            console.log(el);
+        }
+        })
+    var demo=new Vue({
+        el:"#demo",
+        data:{
+            num:10,
+            n:10,
+            color:"red",
+            bakcground:"greenyellow",
+            background:"yellow"
+        },
+        methods:{
+            addNum:function(){
+                return this.num++;
+            }
+        },
+        diractives:{
+            focus:function(el,binding){
+
+            }
+        }
+        
+    })
+    this.$axios({
+        method:"post",
+        url:"https://api.hibai.cn/api/index/index",
+        data:{"TransCode":"020111","OpenId":"Test","Body":{"SongListId":"141998290"}},
+        transformRequest: [function (data) {
+        let ret = ''
+        for (let it in data) {
+          ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+        }
+        return ret
+      }],
+}).then((res)=>{
+    console.log(res.data);
+
+    })
+    </script>
+</body>
+</html>

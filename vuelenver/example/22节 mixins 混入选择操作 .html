@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>mixins 混入选择操作</title>
+    <pre>
+        1.在你已经写好了构造器后，需要增加方法或者临时的活动时使用的方法，这时用混入会减少源代码的污染。比如优惠活动
+        2.很多地方都会用到的公用方法，用混入的方法可以减少代码量，实现代码重用。
+        3.执行顺序，全局api先执行(都是以以Vue开头，Vue.mixins)，再就是mixins混入的执行，再就是原生的执行也就是构造器中的
+    </pre>
+</head>
+<body>
+    <div id="demo">
+        {{message}}
+        <div>
+            <span>count:{{count}}</span>
+            <button @click="add()">点击我试试</button>
+        </div>
+    </div>
+    <script>
+        //构造器外部的使用mixins混入
+        var updateds={
+            updated:function(){
+                console.log("我是混入的updated通过mixins")
+            }
+        }
+        //全局的混入
+        Vue.mixin({
+            updated:function(){
+                console.log("我是全局的混入的updated")
+            }
+        })
+        var demo=new Vue({
+            el:"#demo",
+            data:{
+                message:"重磅 消息+ 在座的各位都是渣渣",
+                count:1
+            },
+            updated:function(){
+                console.log("我是原生的updated对象")
+            },
+            methods:{
+                add:function(){
+                    return this.count++;
+                }
+            },
+            mixins:[updateds] //混入
+        })
+    </script>
+</body>
+</html>

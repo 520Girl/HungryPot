@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>propsData Option全局扩展的数据传递</title>
+    <pre>
+        1.不推荐用全局扩展的方式做自定义标签，学了组件就用组件来做
+        2. 1.在全局扩展里加入props进行接收。propsData:{a:1} 
+        2.传递时用propsData进行传递。props:[‘a’] 
+        3.用插值的形式写入模板。{{ a }} 完整代码：
+    </pre>
+</head>
+<body>
+    <div id="demo">
+        <header></header>
+        <cup></cup>
+    </div>
+    <script type="text/javascript">
+        var header= Vue.extend({
+            template:`<h1>我是一个全局的扩展{{message}}{{ruan}}</h1>`,
+            data:function(){
+                return{
+                    message:"Hello ,I am header！"
+                }
+            },
+            props:['ruan']
+        })
+        new header({propsData:{ruan:"我的姓名"}}).$mount('header');
+
+        var cup=Vue.extend({
+            template:`<p>水杯是拿来喝{{message}}{{water}}的</p>`,
+            data:function(){
+                return{
+                    data:{
+                        message:"小道消息水平还可以用来刷牙！"
+                    }
+                }
+            },
+            props:['water']
+        })
+        new cup({propsData:{water:"water"}}).$mount('cup')
+    </script>
+</body>
+</html> 

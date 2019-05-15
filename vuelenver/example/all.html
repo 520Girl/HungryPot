@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title></title>
+    <style>
+        h1{height: 50px;width: 100%;background-color: burlywood;}
+        .header{background-color: chartreuse;text-decoration: double}
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <h1 >This is title</h1>
+        <div class="content">我是一个手写的class</div>
+        <div :style="colors">vue</div>
+        <input type="checkbox" id="anan" v-model="message" />
+        <label for="anan" :style="message?colors:color">{{message}}</label>
+        <h1 :class="message?h1:header">*******************</h1>
+        <input type="checkbox" id="username" value="username" v-model="array"/>
+        <label for="username">用户名</label>
+        <input type="checkbox" id="username" value="password" v-model="array"/>
+        <label for="username">用户密码</label>
+        <input type="checkbox" id="username" value="email" v-model="array"/>
+        <label for="username">用户邮箱</label>
+        <input type="text" value="" v-model.lazy="text">
+        <input type="submit"/>
+        <h1>{{array+","+text}}</h1>
+        <h1>这是新增加的</h1>
+        <input type="checkbox" id="address" name="address" v-model="isOk" />
+        <label for="address" v-bind:style="isOk?style:color">这段文字会变色</label>
+
+    </div>
+    <script>
+        var demo= new Vue({
+            el:"#demo",
+            data:{
+                color:{
+                    color:"greenyellow",
+                    fontWeight:"800"
+                },
+                colors:{
+                    fontSize:'100px',
+                    color:'red',   
+                },
+                message:false,
+                h1:"h1",
+                header:"header",
+                array:[],
+                text:"",
+                isOk:true,
+                style:{
+                    backgroundColor:"rgba(255,254,55,.5)",
+                    textDecoration:"overline"
+                    
+                }
+            }
+        })
+    </script>
+</body>
+</html>

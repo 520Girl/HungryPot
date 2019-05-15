@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>watch option 监控选项</title>
+    <pre>
+        主要是监控数据的变化，比如天气预报，温度大于。。。建议穿什么
+        2.可以监听到一个数据的新旧值newVal，oldVal
+    </pre>
+</head>
+<body>
+    <div id="demo">
+        {{message}}
+        <p><span>今天的天气是:</span><span>{{weather}}</span>`C</p>
+        <p>建议你穿什么衣服：{{yifu}}</p>
+        <button @click="less()">我要变天冷</button>
+        <button @click="add()">我要变天热</button>
+    </div>
+    <script>
+        var clothes=["皮夹克","棉袄","T裇衫"]
+        var demo=new Vue({
+            el:"#demo",
+            data:{
+                message:"注意了！重磅消息！！！消息!!!!!!",
+                weather:26,
+                clothes:clothes,
+                yifu:"皮夹克"
+            },
+            methods:{
+                add:function(){
+                    return this.weather+=5;
+                },
+                less:function(){
+                    return this.weather-=5;
+                }
+                },
+
+            // watch:{
+            //     weather:function(newVal,oldVal){
+            //         if(newVal>=14){
+            //             return this.yifu=this.clothes[0];
+            //         }else if(newVal<14 && oldVal>0){
+            //             return this.yifu=this.clothes[2];
+            //         }else{
+            //             return this.yifu=this.clothes[1]
+            //         }
+            //     }
+            // }
+            })
+            //第二种方法：使用实例属性写watch 有$都是vue给我们定义好的
+            demo.$watch("weather",function(newVal,oldVal){
+                if(newVal>=26){
+                    return this.yifu=this.clothes[2];
+                }else if(newVal<26 && newVal>0){
+                    return this.yifu=this.clothes[0]
+                }else{
+                    return this.yifu=this.clothes[1]
+                }
+            })
+
+    </script>
+</body>
+</html>

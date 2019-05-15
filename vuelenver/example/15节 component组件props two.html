@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>初识组件</title>
+    <pre>
+        1.其实就是html中的标签，和Vue.extend差不多自我感觉
+        2.就算是全局的都必须在vue的作用域中，一次只能定义一个组件，在构造器外面定义
+        3.局部的在构造器里定义可多个，components
+    </pre>
+    
+</head>
+<body>
+    <div id="demo">
+        <xiaomi></xiaomi>
+    </div>
+    <div id="app">
+        <Phone here="ischuang" v-bind:name="username" v-bind:font-name="tofeng"></Phone>
+    </div>
+    <script>
+        //定义一个全局的组件
+        Vue.component("xiaomi",{
+            template:`<h1>这是我定义的全局组件</h1>`
+        })
+        var demo = new  Vue({
+            el:"#demo",
+            data:{
+                message:"这是",
+                
+            }
+        })
+        var app = new Vue({
+            el:"#app",
+            data:{
+                message:"这也是",
+                username:"我的姓名叫软降",
+                tofeng:"驼峰命名法的缺点",
+                name:"ddd"
+            },
+            components:{//在构造器内部构造局部的组件
+                "Phone":{
+                    template:`<a href="www.520ruan.cn" title="我的网站">链接{{here}}+{{name}}+{{fontName}}</a>`,
+                    props:['here','name','fontName']
+                    
+                }
+            }
+        })
+    </script>
+</body>
+</html>

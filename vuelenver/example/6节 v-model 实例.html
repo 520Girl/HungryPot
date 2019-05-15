@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Hello world</title>
+		<script type="text/javascript" src="../assets/js/vue.js"></script>
+	</head>
+	<body>
+        <pre>   绑定数据源，双向绑定
+                v-model指令，我理解为绑定数据源。
+                就是把数据绑定在特定的表单元素上，
+                可以很容易的实现双向数据绑定。
+        </pre>
+		<h1> hello word</h1>
+		<hr />
+		<div id="demo">
+            <h1>文本框：{{message}}</h1>
+            <p>
+                v-model:<input type="text" v-model="message"/><br/>
+                v-model.lazy:<input type="text" v-model.lazy.trim="message" /><br/>
+                 <!--取代监听input的change事件 exmple当输入标签离开输入框  -->
+                b-model.number:<input type="text" v-model.number="message"/><br/>
+                <!-- 表示开始输入的是数字后面就不能输入除数字以外的其他类型数据 -->
+                v-model.trim:<input type="text" v-model.trim="message"/><br/>
+                <!-- 表示去除首位的空格 -->
+                v-model.trim.number.lazy:<input type="text" v-model.trim.number.lazy="message"/>
+            </p>
+            <h1>文本区域绑定数据</h1>
+            <textarea  cols="30" rows="10" v-model="message"></textarea>
+            <h1>多选按钮绑定一个值</h1>
+            <p>
+                <input type="checkbox" id="anan"  value="shide "v-model="anan"/>
+                <label for="anan">{{anan}}</label>
+            </p>
+            <h1>多选按钮绑定一个数组</h1>
+            <p>
+                <input type="checkbox" id="anan" value="张福琼" v-model="web_Names"/>
+                <label for="anan">张福琼</label>
+                <input type="checkbox" id="anan" value="张小蓉" v-model="web_Names"/>
+                <label for="anan">张小蓉</label>
+                <input type="checkbox" id="anan" value="张杰" v-model="web_Names"/>
+                <label for="anan">张杰</label>
+                <input type="checkbox" id="anan" value="张益达" v-model="web_Names"/>
+                <label for="anan">张益达</label>
+                <p >{{web_Names}}</p>
+            </p>
+            <h1>当选按钮绑定数据</h1>
+            <p>
+                <input type="radio" id="anan" value="男" v-model="sex"/>
+                <label for="anan">男</label>
+                <input type="radio" id="anan" value="女" v-model="sex"/>
+                <label for="anan">女</label>
+                <p>你选择的性格是：{{sex}}</p>
+                
+            </p>
+            
+		</div>
+		<script type="text/javascript">
+			var demo= new Vue({
+				el:'#demo',
+				data:{
+                    message:'hello word!',
+                    anan:true,
+                    web_Names:[],
+                    sex:"男"
+				}
+			})
+		</script>
+	</body>
+</html>

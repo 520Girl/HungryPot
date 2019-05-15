@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>Vue.set全局操作</title>
+    <pre>
+        1.外部数据:就是Vue构造器data对象外面声明,然后再data处引用
+        2.Vue.set的作用，当你修改数组的长度时,vue(js原生也)不会自动更新,就需要通过Vue.set取值
+        3.当你利用索引直接设置一个项时，vue不会为我们自动更新。
+    </pre>
+    <div id="app">
+        <button><p onclick="add()">对set操作add()方法</p></button>
+        <p v-for="item in arr">{{item}}</p>
+        {{count}}
+    </div>
+   <button><p onclick="appFunction()">点击我试试appFunction()方法</p></button>
+   <h1>Vue.set</h1>
+
+</head>
+<body>
+    <script>
+        function add(){//Vue.set 对数组的修改
+            console.log('我已经执行了')
+            //outData.arr[1]="我是"; 使用这个的时候毫无反应
+           Vue.set(app.arr,1,'我是')
+           console.log()
+        }
+        function appFunction(){//外部引用
+            //outData.count++;
+           // app.count++;
+           var names="软件";
+           Vue.set(outData,'count',5)
+        }
+        var outData={
+            count:1,
+            goods:"car",
+            arr:['dd','dfe','ffedf']
+        }
+        var app=new Vue({
+            el:"#app",
+            data:outData
+        })
+    </script>
+</body>
+</html>

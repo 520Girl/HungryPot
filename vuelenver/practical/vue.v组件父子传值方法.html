@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <!-- 父子组件传(v-bind属性绑定)对象,(v-on事件绑定)函数,函数值等 -->
+    <group v-bind:title="msg" @func="add"></group>
+  </div>
+  <template id="temp">
+    <div>
+      <h1 >这是组件:{{message}} +{{title}}</h1>
+    </div>
+  </template>
+<script>
+  //组件的第一章写法
+  // var group = {
+  //   template:"#temp",
+  //   data(){  //在组件中data是一个函数
+  //     return{
+  //       message:"我是私有的date数据"
+  //     }
+  //   },
+  //   template:`<h1>woshi{{title}}</h1>`,
+  //   methods:{
+  //     show(){
+  //       console.log('我是组件定义的方法')
+  //     }
+  //   },
+  //    // 注意： 组件中的 所有 props 中的数据，都是通过 父组件传递给子组件的
+  //         // props 中的数据，都是只读的，无法重新赋值
+  //   props:['title']
+  //   }
+ var vm = new Vue({
+  el:'#app',
+  data:{// 注意： 子组件中的 data 数据，并不是通过 父组件传递过来的，而是子组件自身私有的，比如： 子组件通过 Ajax ，请求回来的数据，都可以放到 data 身上；
+            // data 上的数据，都是可读可写的；
+      msg:'浪起来gogogogogo~~~~',
+      msaage:"的哦",
+      num:null
+   }, 
+  methods:{
+    add(data){
+      //console.log("调用了父组件传过来的函数---"+data+data2)
+      //获取子组件data传递的值
+      this.num =data;
+    }
+  },
+  components:{
+    //组件的第二种写法
+    group:{ //还可以写为'red':group
+      data(){  //在组件中data是一个函数
+      return{
+        message:"我是私有的date数据",
+        num:5
+      }
+    },
+    template:`<h1 @click="show">woshi{{title}}</h1>`,
+    methods:{
+      show(){ //父组件传过来的func
+        console.log('我是组件定义的方法')
+        //子组件给父组件传值
+        //this.$emit('func',123,222)
+        //传递data中的数据
+        this.$emit('func',this.num)
+      }
+    },
+     // 注意： 组件中的 所有 props 中的数据，都是通过 父组件传递给子组件的
+          // props 中的数据，都是只读的，无法重新赋值
+    props:['title'],
+    //父子组件方法的引用
+
+    }
+
+    }
+ }) ;
+ </script>
+</body>
+</html>

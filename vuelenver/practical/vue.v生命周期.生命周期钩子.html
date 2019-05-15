@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div id="div">{{msg}}</div>
+    <button type="button" @click="show">戳我试试</button>
+  </div>
+<script>
+ var vm = new Vue({
+  el:'#app',
+  data:{
+      msg:'这是data 中的数据',
+   }, 
+  methods:{
+    show(){
+      let name = "这是methods中的方法";
+      console.log(document.getElementsByTagName('button').innerHTML = name)
+    },
+  },
+  beforeCreate(){//实例初始化主要是初始化一些默认的方法属性,data中的数据,methods中的函数都不能调用
+    //this.show();
+    //console.log(this.msg);
+  },
+  created(){ //实例中的初始化完成,data中的数据,methods找那个的方法已经可以调用了
+    // this.show();
+    // console.log(this.msg);
+  },
+  beforeMount(){ //表示模板已经在内存中加载完毕,还未加载到页面,页面的元素还没有真正的被替换,只是之前写的一些模板字符串
+    console.log(document.getElementById('div').innerText)
+  },
+  mounted(){//表示，内存中的模板，已经真实的挂载到了页面中，用户已经可以看到渲染好的页面了
+    console.log(document.getElementById('div').innerText)
+  },
+  beforeUpdate(){ //当执行 beforeUpdate 的时候，页面中的显示的数据，还是旧的，此时 data 数据是最新的，页面尚未和 最新的数据保持同步
+
+  },
+  updated(){ //updated 事件执行的时候，页面和 data 数据已经保持同步了，都是最新的
+
+  },
+  beforeDestroy(){},
+  destroyed(){}
+ }) ;
+ </script>
+</body>
+</html>

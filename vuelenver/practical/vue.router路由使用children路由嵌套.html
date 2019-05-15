@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript" src="../assets/js/vue.js"></script>
+  <script src="../assets/js/vue-router-3.0.1.js"></script>
+</head>
+<body>
+
+  <div id="app"><!-- 动画的表格动画中也用到了tag标签 -->
+    <router-link to="/account" tag="a">account</router-link>
+    <router-view></router-view>
+  </div>
+
+  <template id="temp">
+    <div>
+      <h1>这是账户</h1>
+      <router-link to="/account/login" tag="a">登录</router-link>
+      <router-link to="/account/regiter" tag="a">注册</router-link>
+      <router-view></router-view>
+    </div>
+  </template>
+<script>
+  var account ={
+    template:'#temp'
+  }
+  var login ={
+    template:'<h1>登录组件</h1>'
+  }
+  var regiter ={
+    template:'<h1>注册组件</h1>'
+  }
+
+  var router = new VueRouter({
+    routes:[
+      {
+        path:'/account',
+        component:account,
+        children:[//使用children属性实现子路由,子路由path前面不要带/,否则以根路径请求
+          {path:'login',component:login},
+          {path:'regiter',component:regiter}
+        ]
+      }
+    ]
+  })
+ var vm = new Vue({
+  el:'#app',
+  data:{
+      msg:'message',
+ 
+   }, 
+  methods:{},
+  router
+ }) ;
+ </script>
+</body>
+</html>

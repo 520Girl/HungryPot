@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>解构赋值</title>
+</head>
+<body>
+    <script>
+      //解构赋值
+      {
+        var [a,b,c,d,e,f] = [1,2,3,4,5,6] //基本
+          console.log(`基本规则下 a：${a},b：${b},c：${c},d：${d},e：${e},f：${f},`)
+        var [a,[b,c,[d,[e,f]]]] = [1,[2,3,[4,[5,6]]]] //可嵌套
+          console.log(`可嵌套规则下 a：${a},b：${b},c：${c},d：${d},e：${e},f：${f},`)
+        var [a,,b]=[1,2,3]; //可忽略
+         console.log(`可忽略规则下 a：${a},b：${b}`)
+        var [a=1,b]=[]; //不完全解析
+         console.log(`不完全解析规则下 a：${a},b：${b}`)
+        var [a,...b] = [1,2,3,4] //剩余运算符 ...
+         console.log(`剩余运算符规则下 a：${a},b：${b}`)
+         console.log(b);
+         console.log(a);
+      }
+      {
+        var [a,b,c,d,e,f]="hollow"; //字符串解析
+        console.log(`字符串解析规则下 a：${a},b：${b},c：${c},d：${d},e：${e},f：${f},`)
+        var [a=2]=[undefined] //解析默认值,这里左面为默认值当右边的值不存在时,就去默认值,从右开始赋值
+        console.log("默认值为" + a)
+        var [a=2,b=a]=[3,5]
+        console.log("a的值"+a,"的默认值"+b)
+       // let a ="阮江"
+      }
+      {//对象模型的结构(object)
+        var {name,grade}={name:"阮江",grade:"girl"}
+        console.log(name+"是一个"+grade);
+        let {a, b, ...rest} = {a: 10, b: 20, c: 30, d: 40};
+        console.log(a);
+        console.log(b)
+        console.log(rest)
+      }
+      
+    </script>
+</body>
+</html>

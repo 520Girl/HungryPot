@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>js的执行顺序</title>
+</head>
+<body>
+  <script type="text/javascript">
+    // func()
+    // var func =function (){
+    //   console.log("我是")
+    // }
+    // alert(cainiao);
+    // function cainiao(){
+    //   console.log("wishi ")
+    // }
+    // document.write('<script type="text/javascript">')
+    // document.write("alert(a)");
+    // document.write("var n = 1");
+    // document.write("alert(a)");
+    // document.write('<script>');
+    // setInterval((parment)=>{alert("parment")},1000)
+    // function func(parment){
+    //   return function(){
+    //     alert(parment);
+    //   }
+    // }
+    // var num  = func("小鸟");
+    // setInterval(f1,1000);
+    setTimeout(function(){
+    console.log('定时器开始啦')
+});
+
+new Promise(function(resolve){
+    console.log('马上执行for循环啦');
+    for(var i = 0; i < 10000; i++){
+        i == 99 && resolve();
+    }
+}).then(function(){
+    console.log('执行then函数啦')
+});
+
+console.log('代码执行结束');
+  </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Hello world</title>
+		<script type="text/javascript" src="../assets/js/vue.js"></script>
+	</head>
+	<body>
+        <h1>component标签</h1>
+        <div id="demo">
+            {{message}}
+            <pande1 here="小学生">
+                
+            </pande1>
+            <component v-bind:is="whos" ></component>
+            <button @click="styleColor">点击这个按钮</button>
+        </div>
+
+        <script type="text/javascript">
+            //定义三个组件
+            var pande1 = {
+                template:`<p style="color:yellow">这是conponent1{{here}}</p>`,
+                props:['here']
+            }
+            var pande2 = {
+                template:`<p style="color:red">这是conponent2</p>`
+            }
+            var pande3 = {
+                template:`<p style="color:green">这是conponent3</p>`
+            }
+            var demo = new Vue({
+                el:"#demo",
+                data:{
+                    message:"开始我的表演↓ is component  ↓  ↓  ↓  ↓  ↓",
+                    whos:"pande2"
+                },
+                components:{ //可以省略key
+                    pande1,
+                    pande2,
+                    'pande3':pande3,
+                },
+                methods:{
+                    styleColor:function(){
+                        if(this.whos=='pande1'){
+                            this.whos='pande2';
+                        }else if(this.whos=='pande2'){
+                            this.whos='pande3';
+                        }else{
+                            this.whos='pande1';
+                        }
+                    }
+                }
+            })
+		</script>
+	</body>
+</html>

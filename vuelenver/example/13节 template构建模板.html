@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>template 构建模板</title>
+    <pre>
+        1.直接写在选项里的模板  使用很小的模板，组件只写几句话
+        2.写在template标签里的模板 比如别人切了图然后自己写了就可以贴到这
+        3.写在script标签里的模板 可以外部引用成为模板，让页面简介
+    </pre>
+</head>
+<body>
+    <div id="demo">
+        <ul>
+            <li><span>第一种:</span></li>
+            <li>
+                <span>第二种:</span>
+                <template id="app">
+                    <h1 style="background:yellow">这是template标签里的模块</h1>
+                </template>
+            </li>
+            <li>
+                <span>第三种:</span>
+                <script type="x-template" id="demo3" src="">
+                        <h2 style="color:red">我是script标签模板</h2>
+                </script>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var demo=new Vue({
+            el:"#demo",
+            data:{
+                message:"这里是消息"
+            },
+            template:"#app" //这是第二次种
+            //1.template:`<h1 style="color:green">这是在选项的标签</h1>`
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>组件</title>
+  <script type="text/javascript" src="../assets/js/vue.js"></script>
+  <style>
+    .v-enter,.v-leave-to{
+      opacity: 0;
+      transform: translate(100px,0)
+    }
+    .v-enter-active,.v-leave-active{
+      transition: all 0.5s ease;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <color></color>
+    <group></group>
+    <zujian></zujian>
+  </div>
+  <template id="tem">
+    <div>
+        <h1>组件三</h1>
+    </div>
+  </template>
+
+  <div id="app2">
+    <a href="" @click.prevent="judge=true">登录</a>
+    <a href="" @click.prevent="judge=false">注册</a>
+    <login v-if="judge"></login>
+    <register v-else></register>
+
+    <!-- 方法2可实现多个组件切换 -->
+    <a href="" @click.prevent="templateName='login'">登录</a>
+    <a href="" @click.prevent="templateName='group'">注册</a>
+    <a href="" @click.prevent="templateName='zujian'">修改</a>
+    <transition appear mode="out-in">
+    <!-- 1. component是一个占位符，：is，用来指定展示组件的名称，通过绑定变量来实现切换
+         2.只需将<component>组件定义的标签用<transition>包裹起来即可 
+    -->
+    <component :is="templateName"></component>
+    </transition>
+  </div>
+<script>
+      //创建全局组件的三种方法 ,组件必须有一个打标签包裹,这里说明了vue脚手架中的问题
+    //1. 通过Vue.extend创建全局组件,所谓全局组件就是,在任何一个Vue实例下都能使用
+    var color = Vue.extend({
+      template:`<h1>我是第一种方法创建的组件</h1>`
+    })
+    Vue.component('color',color);
+    //2.通过 vue.component创建全局组件
+    Vue.component('group',{
+      template:`<div><h1>me is secede template</h1><p>yes--{{msg}}</p></div>`,
+      data:function(){ //这里又说明了Vue项目中的data问题,原来每一个页面是一个组件
+                        // return object
+        return{
+          msg:'instead',
+        }
+      }
+    })
+    //通过Vue.component + template内置标签创建强大的组件
+    Vue.component('zujian',{
+      template:"#tem"
+    })
+    /* 组件创建方式到 此结束 */
+
+    /* 组件切换的2中方式 Vue2*/ 
+    Vue.component('login',{template:`<h1>登录组件</h1>`});
+    Vue.component('register',{template:`<h1>组成组件</h1>`});
+    Vue.component('revise',{template:`<h1>修改密码组件</h1>`});
+ var vm = new Vue({
+  el:'#app',
+  data:{
+      msg:'message',
+ 
+   }, 
+  methods:{},
+  components:{
+    login: {  //这是局部组件,和全局组件差不多 ,也可以通过一个变量来创建局部组件var cord={template:`...`},之后再在components:{cord} or{'ruan':cord}中引入 
+          template: '#tmpl2'
+          }
+  }
+ }) ;
+
+ var vm2 = new Vue({
+  el:'#app2',
+  data:{
+      msg:'message',
+      judge:true,
+      templateName:'login'
+   }, 
+  methods:{}
+ }) ;
+ </script>
+</body>
+</html>

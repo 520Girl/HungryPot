@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>let var const的区别</title>
+</head>
+<body>
+  <pre>
+    1.fdaf
+    2.fds
+  </pre>
+  <script>
+    //let const var 区别 变量提升，函数提升
+    { //这是一个块作用域
+      let a ="这只是一个块作用域";
+      //let a ="r"; //不能进行二次声明
+      var x ;//声明一个x
+      console.log(x); //这个会提到最上面去所有x显示未定义
+      x ="我是声明dex";
+      var y="wo是初始化变量"
+      console.log(x);
+      console.log(y);
+    }
+    
+    console.log(func()) //。。。
+    console.log(func1())//未定义
+    function func(){ //函数声明
+      return "//声明的函数存在函数提升"
+    }
+    var func1=function(){ //进行函数定义
+      return '//进行函数定义'
+    }
+
+    //解构赋值
+  </script>
+</body>
+</html>

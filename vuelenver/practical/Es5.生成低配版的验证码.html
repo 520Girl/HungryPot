@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>低配版的验证码</title>
+    <style>
+        span{
+            background: gray;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>请输入你需要的验证码个数</h1>
+        <input type="type" value="" id="demo">
+        <button onclick="identifying()">提交</button>
+        <h5>生产验证码：<span id="span"></span></h5>
+    </div>
+    <script>
+        function identifying(){//首先知道了+=这样写可以把循环的值组合在一起(以字符串形式组合),
+                                //str.charAt是放回指定位置的字符
+                                //Math.round是四舍五入-3.5入-3
+                                //Math.random是生成[0,1)随机数
+            var oIpt=document.getElementById('demo');
+            var oSpn=document.getElementById('span');
+            var str="abcdefghijklmnopqrstuvwxyz0123456789";
+            var temp="";
+            n=oIpt.value
+            for(var i=0;i<n;i++){
+                temp += str.charAt(Math.round(Math.random()*str.length));
+            }  
+            oSpn.innerHTML=temp;
+            return oSpn.innerHTML;
+        }
+        document.write(identifying());
+    </script>
+</body>
+</html>
