@@ -58,6 +58,15 @@ ol {
   color: #333333;
 }
 
+.clearFix::before,
+.clearFix::after {
+  content: "";
+  height: 0;
+  display: block;
+  clear: both;
+  overflow: hidden;
+}
+
 /* reset css  End */
 /* 自定义字体的引入 */
 @font-face {
@@ -264,14 +273,13 @@ ol {
 }
 
 @media (min-width: 768px) and (max-width: 992px) {
-  .wjs_info>.container {
+  .finance_info .container {
     width: 750px;
   }
 }
 
 .finance_info>.container span {
   font-size: 30px;
-
 }
 
 .finance_info>.container .media {
@@ -325,29 +333,29 @@ ol {
   border-bottom: 1px solid #cccccc;
 }
 
-.finance_product .nav-tabs {
+.finance_product .finance_news {
   border-bottom: none;
 }
 
-.finance_product .nav-tabs>li {
+.finance_product .finance_news>li {
   float: left;
   margin-bottom: -1px;
 }
 
-.finance_product .nav-tabs>li>a {
+.finance_product .finance_news>li>a {
   margin-right: 2px;
   line-height: 1.42857143;
   border: none;
   border-radius: 4px 4px 0 0;
 }
 
-.finance_product .nav-tabs>li>a:hover {
+.finance_product .finance_news>li>a:hover {
   background: #f5f5f5;
 }
 
-.finance_product .nav-tabs>li.active>a,
-.finance_product .nav-tabs>li.active>a:hover,
-.finance_product .nav-tabs>li.active>a:focus {
+.finance_product .finance_news>li.active>a,
+.finance_product .finance_news>li.active>a:hover,
+.finance_product .finance_news>li.active>a:focus {
   color: #555;
   cursor: default;
   background: #f5f5f5;
@@ -355,62 +363,332 @@ ol {
   border-bottom: 3px solid #e92322;
 }
 
-.nav-tabs>li.active>a,
+.finance_product .nav-tabs>li.active>a,
 .nav-tabs>li.active>a:hover,
 .nav-tabs>li.active>a:focus {
+  background-color: #ccc;
+}
+
+
+
+.finance_news>li.active>a,
+.finance_news>li.active>a:hover,
+.finance_news>li.active>a:focus {
   border: none;
 }
 
-.finance_product .nav-tabs.nav-justified {
+.finance_product .finance_news.nav-justified {
   width: 100%;
   border-bottom: 0;
 }
 
-.finance_product .nav-tabs.nav-justified>li {
+.finance_product .finance_news.nav-justified>li {
   float: none;
 }
 
-.finance_product .nav-tabs.nav-justified>li>a {
+.finance_product .finance_news.nav-justified>li>a {
   margin-bottom: 5px;
   text-align: center;
 }
 
-.finance_product .nav-tabs.nav-justified>.dropdown .dropdown-menu {
+.finance_product .finance_news.nav-justified>.dropdown .dropdown-menu {
   top: auto;
   left: auto;
 }
 
 @media (min-width: 768px) {
-  .finance_product .nav-tabs.nav-justified>li {
+  .finance_product .finance_news.nav-justified>li {
     display: table-cell;
     width: 1%;
   }
 
-  .finance_product .nav-tabs.nav-justified>li>a {
+  .finance_product .finance_news.nav-justified>li>a {
     margin-bottom: 0;
   }
 }
 
-.finance_product .nav-tabs.nav-justified>li>a {
+.finance_product .finance_news.nav-justified>li>a {
   margin-right: 0;
   border-radius: 4px;
 }
 
-.finance_product .nav-tabs.nav-justified>.active>a,
-.finance_product .nav-tabs.nav-justified>.active>a:hover,
-.finance_product .nav-tabs.nav-justified>.active>a:focus {
+.finance_product .finance_news.nav-justified>.active>a,
+.finance_product .finance_news.nav-justified>.active>a:hover,
+.finance_product .finance_news.nav-justified>.active>a:focus {
   border: 1px solid #ddd;
 }
 
 @media (min-width: 768px) {
-  .finance_product .nav-tabs.nav-justified>li>a {
+  .finance_product .finance_news.nav-justified>li>a {
     border-bottom: 1px solid #ddd;
     border-radius: 4px 4px 0 0;
   }
 
-  .finance_product .nav-tabs.nav-justified>.active>a,
-  .finance_product .nav-tabs.nav-justified>.active>a:hover,
-  .finance_product .nav-tabs.nav-justified>.active>a:focus {
+  .finance_product .finance_news.nav-justified>.active>a,
+  .finance_product .finance_news.nav-justified>.active>a:hover,
+  .finance_product .finance_news.nav-justified>.active>a:focus {
     border-bottom-color: #fff;
   }
+}
+
+.pro_box {
+  display: block;
+  margin: 25px 0;
+  color: #333333;
+  box-shadow: 2px 3px 5px #cccccc;
+}
+
+.pro_box.active::before {
+  content: "\e915";
+  position: absolute;
+  left: 15px;
+  top: 16px;
+  font-family: finance;
+  color: #fff;
+  font-size: 45px;
+}
+
+.pro_box.active {
+  background: #e92322;
+}
+
+.pro_box.active .pro_left h1,
+.pro_box.active .pro_left p,
+.pro_box.active .pro_right p,
+.pro_box.active .pro_right p b {
+  color: #fff;
+}
+
+.pro_box div {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.pro_box .pro_right {
+  display: block;
+  float: right;
+  padding: 20px 20px 50px;
+  text-align: center;
+  box-sizing: border-box;
+  border-left: 1px dashed #cccccc;
+}
+
+.pro_box .pro_right p {
+  color: #333333;
+  font-size: 14px;
+  display: block;
+}
+
+.pro_box .pro_right p:last-child {
+  padding-top: 10px;
+}
+
+.pro_box .pro_right p b {
+  font-size: 30px;
+  color: #333333;
+}
+
+
+.pro_box .pro_right p sub {
+  vertical-align: baseline;
+}
+
+.pro_box .pro_right::after,
+.pro_box .pro_left::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+  background: #f5f5f5;
+  z-index: 10000;
+}
+
+.pro_box .pro_left::after {
+  bottom: 20px;
+  right: 90px;
+}
+
+.pro_box .pro_right::after {
+  top: 20px;
+  right: 90px;
+  /*
+    参数1：x轴的偏移
+    参数2：y轴的偏移
+    参数3：阴影的模糊的
+    参数4：阴影的延伸
+    参数5：阴影的颜色
+    参数6：内阴影
+    */
+  box-shadow: 0 -2px 2px #d8d8d8 inset;
+}
+
+.pro_box .pro_left {
+  display: block;
+}
+
+.pro_box .pro_left h1 {
+  padding: 10px 0;
+  font-size: 16px;
+  color: #333333;
+  font-weight: 500;
+
+}
+
+.pro_box .pro_left div {
+  padding: 10px;
+}
+
+.pro_box .pro_left div p {
+  color: #555;
+  font-size: 12px;
+}
+
+/* 新闻栏目 news */
+.finance_news {
+  padding: 20px 0;
+  border-bottom: 1px solid #cccccc;
+}
+
+.finance_news .news_title {
+  font-size: 20px;
+  margin: 20px 0;
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #cccccc;
+}
+
+.finance_news .news_title::after {
+  content: "";
+  height: 5px;
+  width: 5px;
+  position: absolute;
+  top: 66px;
+  right: 10px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+}
+
+.finance_news .news_line {
+  width: 50px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 45px;
+  border-left: 1px dashed #ccc;
+}
+
+/*1.在小屏设备  间距固定 没有虚线*/
+@media (min-width: 768px) and (max-width: 992px) {
+  .finance_news .nav-tabs>li>a {
+    margin: 30px 50px;
+    border-bottom: none;
+  }
+
+}
+
+/*2.超小屏设备  间距自适应  没有虚线*/
+@media (max-width: 768px) {
+  .finance_news .nav-tabs>li {
+    width: 25%;
+  }
+
+  .finance_news .nav-tabs>li>a {
+    margin: 30px auto;
+  }
+
+  .finance_news .news_info {
+    padding-left: 20px;
+  }
+}
+
+.finance_news ul li.active a {
+  background: red;
+}
+
+
+.finance_news ul li a {
+  height: 60px;
+  width: 60px;
+  background: #cccccc;
+  border-radius: 30px;
+  margin-bottom: 60px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.finance_news .news_info ul li a {
+  background: #fff;
+}
+
+.finance_news ul li span {
+  font-size: 30px;
+  color: #fff;
+}
+
+.finance_news .news_info div ul li {
+  padding: 15px 0;
+  color: #333333;
+  font-size: 14px;
+  background: #fff;
+}
+
+.finance_news>li {
+  float: left;
+  margin-bottom: -1px;
+}
+
+.finance_news>li>a {
+  margin-right: 2px;
+  line-height: 1.42857143;
+  border: 1px solid transparent;
+  border-radius: 4px 4px 0 0;
+}
+
+.finance_news>li>a:hover {
+  border-color: #eee #eee #ddd;
+}
+
+.finance_news li.active a,
+.finance_news li.active a:hover,
+.finance_news li.active a:focus {
+  cursor: default;
+  border-bottom-color: transparent;
+}
+
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:hover,
+.nav-tabs>li.active>a:focus {
+  background-color: red;
+  border: none;
+}
+
+.nav>li>a:hover,
+.nav>li>a:focus {
+  background-color: #cccccc;
+}
+
+.nav-tabs>li>a {
+  border: none;
+}
+
+/* footer */
+.finance_partner {
+  padding: 50px;
+  text-align: center;
+}
+
+.finance_partner h3 {
+  font-weight: 700;
+
+}
+
+.finance_partner ul li {
+  display: inline-block;
+
+}
+
+.finance_partner ul li span {
+  font-size: 70px;
+  padding: 0 15px;
+  display: block;
 }
