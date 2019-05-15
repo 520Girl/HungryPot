@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>practice</title>
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1160728_jscql1xe92.css">
+    <script>
+      (function(){
+        function a(){
+          var b=document.documentElement.clientWidth || document.body.clientWidth;
+          console.log("屏幕宽度:"+b)
+          b =b>750?750:b;
+          var a =b/750*100;
+          document.getElementsByTagName('html')[0].style.fontSize=a+"px"}a();
+          window.onresize=a;
+        })()
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>

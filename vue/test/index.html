@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script>
+    (function(){
+      function a(){
+        var b=document.documentElement.clientWidth || document.body.clientWidth;
+        console.log("屏幕的宽度:"+b)
+        b=b>750?750:b;
+        var c=b/750*100;
+        document.getElementsByTagName("html")[0].style.fontSize=c+"px"}a();
+        window.onresize=a
+     })();
+    </script>
+    <title>时钟</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+    <!-- <style>
+      body {
+  background: #0f3854;
+  background: -webkit-radial-gradient(center ellipse, #0a2e38 0%, #000000 70%);
+  background: radial-gradient(ellipse at center, #0a2e38 0%, #000000 70%);
+  background-size: 100%;
+}
+    </style> -->
+  </body>
+</html>
