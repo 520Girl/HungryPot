@@ -1,0 +1,416 @@
+/* reset css start */
+body {
+  font-size: 14px;
+  color: #333333;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  font-family: 'Microsoft YaHei', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  -webkit-box-sizing: border-box;
+}
+
+tr,
+td,
+table,
+dd,
+dl,
+dt,
+ol,
+li,
+ul,
+input,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+form {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none !important;
+  color: #333333;
+  -webkit-tap-highlight-color: transparent;
+}
+
+input,
+textarea {
+  outline: none;
+  resize: none;
+  border: none;
+  appearance: none;
+}
+
+ul,
+li,
+ol {
+  list-style: none;
+  color: #333333;
+}
+
+/* reset css  End */
+/* 自定义字体的引入 */
+@font-face {
+  /* 2.申明自己的字体名称 */
+  font-family: 'finance';
+  /* 3.引入的字体文字 */
+  src:
+    url(/fonts/MiFie-Web-Font.eot) format('embedden-opentype'),
+    url(/fonts/MiFie-Web-Font.svg) format('svg'),
+    url(/fonts/MiFie-Web-Font.ttf) format('truetype'),
+    url(/fonts/MiFie-Web-Font.woff) format('woff');
+}
+
+/* 引入字体图标2步  */
+.finance_icon {
+  font-family: finance;
+}
+
+.finance_icon_phone::before {
+  content: "\e908";
+}
+
+.finance_icon_tel::before {
+  content: "\e909";
+}
+
+.finance_icon_logo::before {
+  content: "\e920";
+}
+
+.finance_icon_name::before {
+  content: "\e93e";
+}
+
+.finance_icon_dollar::before {
+  content: "\e903";
+}
+
+.finance_icon_clock::before {
+  content: "\e906";
+}
+
+.finance_icon_video::before {
+  content: "\e905";
+}
+
+.finance_icon_news_01::before {
+  content: "\e90e";
+}
+
+.finance_icon_news_02::before {
+  content: "\e90f";
+}
+
+.finance_icon_news_03::before {
+  content: "\e910";
+}
+
+.finance_icon_news_04::before {
+  content: "\e911";
+}
+
+.finance_icon_partner01::before {
+  content: "\e946";
+}
+
+.finance_icon_partner02::before {
+  content: "\e92f";
+}
+
+.finance_icon_partner03::before {
+  content: "\e92e";
+}
+
+.finance_icon_partner04::before {
+  content: "\e92a";
+}
+
+.finance_icon_partner05::before {
+  content: "\e929";
+}
+
+.finance_icon_partner06::before {
+  content: "\e931";
+}
+
+.finance_icon_partner07::before {
+  content: "\e92c";
+}
+
+.finance_icon_partner08::before {
+  content: "\e92b";
+}
+
+.finance_icon_partner09::before {
+  content: "\e92d";
+}
+
+/* .finance_icon */
+/* header 头部 css */
+.finance_header {
+  border-bottom: 1px solid #cccccc;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+
+
+.finance_header>.container>.row>div {
+  border-right: 1px solid #cccccc;
+  height: 40px;
+  line-height: 40px;
+  font-size: 12px;
+  color: #333333;
+}
+
+.finance_hander>.container>.row>div~div {
+  border-left: 1px solid #cccccc;
+}
+
+.finance_app img {
+  display: none;
+}
+
+.finance_app:hover img {
+  display: block;
+  position: absolute;
+  left: 50%;
+  margin-left: -60px;
+  top: 40px;
+}
+
+.btn_register {
+  background-color: rgb(197, 20, 20);
+  padding: 3px 12px;
+  font-size: 12px;
+  color: aliceblue;
+
+}
+
+.btn_login {
+  color: #333333;
+  text-decoration: none;
+}
+
+/* nav 导航 */
+.finance_nav {
+  height: 80px;
+  background-color: #ffffff;
+  margin-bottom: 0;
+}
+
+.finance_nav ul li a:focus {
+  border-bottom: 4px solid rgb(182, 21, 21);
+}
+
+.finance_nav ul li a {
+  height: 80px;
+  line-height: 50px;
+
+}
+
+.navbar-default .navbar-nav>.active>a {
+  border-bottom: 4px solid rgb(182, 21, 21);
+  background: #ffffff;
+}
+
+.navbar-default .navbar-nav>.active>a:visited {
+  background: #ffffff;
+}
+
+.navbar-default .navbar-nav>.active>a:hover {
+  background: #ffffff;
+}
+
+.finance_nav .finance_nav_logo {
+  height: 80px;
+  line-height: 50px;
+
+}
+
+.finance_nav_logo span:first-child {
+  font-size: 50px;
+  color: red;
+  vertical-align: middle;
+  /* 字体基准线解决了问题 */
+}
+
+.finance_nav_logo span:last-child {
+  font-size: 36px;
+  color: black;
+  vertical-align: middle;
+}
+
+/* banner 轮播图 */
+/* info 信息栏目*/
+.finance_info {
+  border-bottom: 1px solid #cccccc;
+  padding: 15px 0;
+}
+
+.finance_info>.container {
+  width: 900px;
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .wjs_info>.container {
+    width: 750px;
+  }
+}
+
+.finance_info>.container span {
+  font-size: 30px;
+
+}
+
+.finance_info>.container .media {
+  padding: 15px 0;
+}
+
+.finance_info>.container .media:hover {
+  color: red;
+  cursor: pointer;
+}
+
+.finance_info>.container>div h4 {
+  margin-bottom: 5px;
+}
+
+.finance_info>.container>div p {}
+
+/* book 预约模块 */
+.finance_book {
+  padding: 40px 0;
+  border-bottom: 1px solid #cccccc;
+
+}
+
+.finance_book .container {
+  width: 900px;
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .finance_book>.container {
+    width: 750px;
+  }
+}
+
+@media (max-width: 768px) {
+  .finance_book>.container {
+    width: 100%;
+  }
+}
+
+.finance_book>.container .pull-left a {
+  color: red;
+  border-bottom: red dashed 1px;
+  padding-left: 5px;
+}
+
+/* 產品  product */
+.finance_product {
+  padding: 20px 0;
+  background: #f5f5f5;
+  border-bottom: 1px solid #cccccc;
+}
+
+.finance_product .nav-tabs {
+  border-bottom: none;
+}
+
+.finance_product .nav-tabs>li {
+  float: left;
+  margin-bottom: -1px;
+}
+
+.finance_product .nav-tabs>li>a {
+  margin-right: 2px;
+  line-height: 1.42857143;
+  border: none;
+  border-radius: 4px 4px 0 0;
+}
+
+.finance_product .nav-tabs>li>a:hover {
+  background: #f5f5f5;
+}
+
+.finance_product .nav-tabs>li.active>a,
+.finance_product .nav-tabs>li.active>a:hover,
+.finance_product .nav-tabs>li.active>a:focus {
+  color: #555;
+  cursor: default;
+  background: #f5f5f5;
+  border: none;
+  border-bottom: 3px solid #e92322;
+}
+
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:hover,
+.nav-tabs>li.active>a:focus {
+  border: none;
+}
+
+.finance_product .nav-tabs.nav-justified {
+  width: 100%;
+  border-bottom: 0;
+}
+
+.finance_product .nav-tabs.nav-justified>li {
+  float: none;
+}
+
+.finance_product .nav-tabs.nav-justified>li>a {
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.finance_product .nav-tabs.nav-justified>.dropdown .dropdown-menu {
+  top: auto;
+  left: auto;
+}
+
+@media (min-width: 768px) {
+  .finance_product .nav-tabs.nav-justified>li {
+    display: table-cell;
+    width: 1%;
+  }
+
+  .finance_product .nav-tabs.nav-justified>li>a {
+    margin-bottom: 0;
+  }
+}
+
+.finance_product .nav-tabs.nav-justified>li>a {
+  margin-right: 0;
+  border-radius: 4px;
+}
+
+.finance_product .nav-tabs.nav-justified>.active>a,
+.finance_product .nav-tabs.nav-justified>.active>a:hover,
+.finance_product .nav-tabs.nav-justified>.active>a:focus {
+  border: 1px solid #ddd;
+}
+
+@media (min-width: 768px) {
+  .finance_product .nav-tabs.nav-justified>li>a {
+    border-bottom: 1px solid #ddd;
+    border-radius: 4px 4px 0 0;
+  }
+
+  .finance_product .nav-tabs.nav-justified>.active>a,
+  .finance_product .nav-tabs.nav-justified>.active>a:hover,
+  .finance_product .nav-tabs.nav-justified>.active>a:focus {
+    border-bottom-color: #fff;
+  }
+}
